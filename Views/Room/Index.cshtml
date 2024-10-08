@@ -1,0 +1,220 @@
+﻿@model List<Room>
+
+
+<link href="~/css/table.css" rel="stylesheet" />
+
+
+<a class="nav-link text-dark" id="Create" asp-controller="Room" asp-action="Create">Create New Room</a>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered   table-striped" style="margin-top:50px">
+            <thead class="table__head">
+                <tr class="winner__table">
+
+                    <th><i class="fa fa-home" aria-hidden="true"></i> Room Name</th>
+
+
+                    <th><i class="fa fa-trash" aria-hidden="true"></i> Delete</th>
+
+                </tr>
+            </thead>
+            @foreach (Room I in Model)
+            {
+                <tbody>
+                    <tr class="winner__table">
+                        <td>@I.RoomName</td>
+
+
+                        <td><a href="/Room/Delete/@I.RoomID"><i class="fa fa-trash-o" style="font-size:20px;color:#4F89D4"></i></a></td>
+
+                    </tr>
+
+
+
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+@*      room card *@
+<div class="Container">
+    <h1>About Room</h1>
+    <div class="row">
+        <div class="col-sm-4" id="card">
+            <div class="card" style="width: 18rem;">
+                <img src="/img/premium_photo-1680807869780-e0876a6f3cd5.jpeg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img src="/img/800px-Elementary_classroom_in_Alaska.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+                <img src="/img/Northwood-College-GDST-staffroom_002.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+
+@*      room card *@
+
+@* Gallery *@
+
+
+<div class="Container">
+    <div class="gallery">
+        <h1>Gallery</h1>
+        <p>
+            <img src="/img/800px-Elementary_classroom_in_Alaska.jpg">
+            <img src="/img/800px-Elementary_classroom_in_Alaska.jpg">
+            <img src="/img/800px-Elementary_classroom_in_Alaska.jpg">
+            <img src="/img/800px-Elementary_classroom_in_Alaska.jpg">
+            <img src="/img/800px-Elementary_classroom_in_Alaska.jpg">
+        </p>
+    </div>
+</div>
+@* Gallery *@
+
+
+
+<style>
+
+
+    .Container {
+        margin-top: 60px;
+    }
+
+    .card {
+        transition: 0.5s;
+    }
+
+        .card:hover {
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        color: hotpink;
+        font-family: 'Book Antiqua';
+    }
+
+    .gallery p {
+        height: 200px;
+        width: 500px;
+        margin: 100px auto;
+        position: relative;
+    }
+
+    .gallery img {
+        height: 100px;
+        position: absolute;
+        left: 0;
+        offset-path: path('m 0 50 q 50-30 100-30 t 100 30 100 0 100-30 100 30');
+        box-shadow: 1px 1px 3px #0008;
+        transition: transform .4s ease-out, offset-path .4s cubic-bezier(.77,-1.17,.75,.84),box-shadow .3s, z-index .3s;
+        z-index: 0;
+        width: 150px;
+    }
+
+        .gallery img:hover {
+            transform: scale(3);
+            /* on hover, the path gets a bit shorter & flattened & shifted to left/bottom a bit for nicer movement */
+            offset-path: path('m 5 65 q 45-0 90-0 t 90 0 90 0 90-0 90 0');
+            box-shadow: 3px 4px 10px #0006;
+            /* ensures that image gets on top of stack at the start of "popping" animation
+             and gets back at the end of getting back. With smaller value, 2 different transitions would be needed */
+            z-index: 999;
+        }
+
+        /* 3 images */
+        .gallery img:nth-last-child(3):first-child {
+            offset-distance: 17%;
+        }
+
+        .gallery img:nth-last-child(2):nth-child(2) {
+            offset-distance: 49%;
+        }
+
+        .gallery img:last-child:nth-child(3) {
+            offset-distance: 81%;
+        }
+
+        /* 4 images */
+        .gallery img:nth-last-child(4):first-child {
+            offset-distance: 10%;
+        }
+
+    .galleryimg:nth-last-child(3):nth-child(2) {
+        offset-distance: 35%;
+    }
+
+    .gallery img:nth-last-child(2):nth-child(3) {
+        offset-distance: 65%;
+    }
+
+    .gallery img:last-child:nth-child(4) {
+        offset-distance: 90%;
+    }
+
+    /* 5 images */
+    .gallery img:nth-last-child(5):first-child {
+        offset-distance: 0%;
+    }
+
+    .gallery img:nth-last-child(4):nth-child(2) {
+        offset-distance: 25%;
+    }
+
+    .gallery img:nth-last-child(3):nth-child(3) {
+        offset-distance: 51%;
+    }
+
+    .gallery img:nth-last-child(2):nth-child(4) {
+        offset-distance: 75%;
+    }
+
+    .gallery img:last-child:nth-child(5) {
+        offset-distance: 100%;
+    }
+</style>

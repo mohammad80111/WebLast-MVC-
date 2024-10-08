@@ -1,0 +1,229 @@
+﻿@model List<Course>
+
+<link href="~/css/table.css" rel="stylesheet" />
+
+
+
+
+<a class="nav-link text-dark" id="Create" asp-controller="Course" asp-action="Create">Create New Course</a>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-bordered   table-striped" style="margin-top:50px">
+            <thead class="table__head">
+                <tr class="winner__table">
+
+                    <th><i class="fa fa-user" aria-hidden="true"></i> Course Name</th>
+                    <th><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> Course Capacity</th>
+                    <th><i class="fa fa-users" aria-hidden="true"></i> Teacher ID</th>
+                    <th><i class="fa fa-trash" aria-hidden="true"></i> Delete</th>
+
+                </tr>
+            </thead>
+            @foreach (Course I in Model)
+            {
+                <tbody>
+                    <tr class="winner__table">
+                        <td>@I.CourseName</td>
+                        <td>@I.CourseCapacity</td>
+                        <td>@I.TeacherId</td>
+
+                        <td><a href="/Course/Delete/@I."><i class="fa fa-trash-o" style="font-size:20px;color:#4F89D4"></i></a></td>
+
+                    </tr>
+
+
+
+                </tbody>
+            }
+        </table>
+    </div>
+</div>
+
+
+
+
+@* card *@
+
+
+<section class="carousel">
+    <h2 class="categories__title">Courses</h2>
+    <div class="carousel__container">
+        <div class="carousel-item">
+            <img class="carousel-item__img"
+                 src="https://severalnines.com/wp-content/uploads/2023/12/BLOG-Whats-new-in-SQL-Server-2022-480x360.png"
+                 alt="people" />
+            <div class="carousel-item__details">
+               
+                <h5 class="carousel-item__details--title">SQL Server</h5>
+                <h6 class="carousel-item__details--subtitle">Course</h6>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="carousel-item__img"
+                 src="/img/bobo.png"
+                 alt="people" />
+            <div class="carousel-item__details">
+              
+                <h5 class="carousel-item__details--title">BootStrap</h5>
+                <h6 class="carousel-item__details--subtitle">Course</h6>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="carousel-item__img"
+                 src="/img/asp.png"
+                 alt="people" />
+            <div class="carousel-item__details">
+        
+                <h5 class="carousel-item__details--title">Asp.Net</h5>
+                <h6 class="carousel-item__details--subtitle">Course</h6>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="carousel-item__img"
+                 src="/img/react.jpg"
+                 alt="people" />
+            <div class="carousel-item__details">
+               
+                <h5 class="carousel-item__details--title">React</h5>
+                <h6 class="carousel-item__details--subtitle">Course</h6>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img class="carousel-item__img"
+                 src="/img/css-3.svg"
+                 alt="people" />
+            <div class="carousel-item__details">
+             
+                <h5 class="carousel-item__details--title">CSS</h5>
+                <h6 class="carousel-item__details--subtitle">Course</h6>
+            </div>
+        </div>
+ 
+
+   
+    </div>
+</section>
+@* card *@
+
+@* card *@
+<style>
+ 
+
+  
+
+
+
+  
+
+    .carousel__container {
+        white-space: nowrap;
+        margin: 70px 0px;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    .categories__title {
+        color: rgb(77, 55, 102);
+        font-size: 40px;
+       margin-top:50px;
+       margin-bottom:10px;
+       font-family:'Cascadia Code';
+        text-align:center!important;
+       
+
+    }
+
+    .carousel-item {
+        width: 200px;
+        height: 250px;
+        border-radius: 20px;
+        background-color: #95bcd6;
+        overflow: hidden;
+        margin-right: 10px;
+        margin-top: 70px;
+        display: inline-block;
+        cursor: pointer;
+        -webkit-transition: 1000ms all;
+        transition: 1000ms all;
+        -webkit-transform-origin: center left;
+        transform-origin: center left;
+        position: relative;
+    }
+
+        .carousel-item:hover ~ .carousel-item {
+            -webkit-transform: translate3d(100px, 0, 0);
+            transform: translate3d(100px, 0, 0);
+        }
+
+    .carousel__container:hover .carousel-item {
+        opacity: 0.3;
+    }
+
+        .carousel__container:hover .carousel-item:hover {
+            -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+            opacity: 1;
+        }
+
+    .carousel-item__img {
+        width: 200px;
+        height: 250px;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .carousel-item__details {
+        background: -webkit-gradient( linear, left bottom, left top, from(rgba(0, 0, 0, 0.9)), to(rgba(0, 0, 0, 0)) );
+        background: linear-gradient( to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100% );
+        font-size: 10px;
+        opacity: 0;
+        -webkit-transition: 450ms opacity;
+        transition: 450ms opacity;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+        .carousel-item__details:hover {
+            opacity: 1;
+        }
+
+        .carousel-item__details span {
+            /* width: 10px;
+      height: 10px; */
+            font-size: 0.9rem;
+            color: #2ecc71;
+            /* background-color: white; */
+        }
+
+        .carousel-item__details .controls {
+            padding-top: 180px;
+        }
+
+        .carousel-item__details .carousel-item__details--title,
+        .carousel-item__details--subtitle {
+            color: #fff;
+            margin: 5px 0;
+        }
+    </style>
+@* card *@
+
+
+
+
+
+
+
+
+
